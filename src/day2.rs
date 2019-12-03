@@ -52,17 +52,17 @@ fn parse_input(input: &str) -> Vec<usize> {
 }
 
 #[aoc(day2, part1)]
-fn part1(input: &Vec<usize>) -> usize {
-    let mut program = input.clone();
+fn part1(input: &[usize]) -> usize {
+    let mut program = input.to_vec();
     program[1] = 12;
     program[2] = 2;
     run_program(program)[0]
 }
 
-const TARGET: usize = 19690720;
+const TARGET: usize = 19_690_720;
 
 #[aoc(day2, part2)]
-fn part2(input: &Vec<usize>) -> usize {
+fn part2(input: &[usize]) -> usize {
     // Optimisation: rather than naively running the program through all inputs,
     // in order, create a vector with all options and binary search using
     // the run_program function.
@@ -78,10 +78,10 @@ fn part2(input: &Vec<usize>) -> usize {
     let mut attempts = 0;
     let res = nouns_and_verbs.binary_search_by(|probe| {
         attempts += 1;
-        let mut program = input.clone();
+        let mut program = input.to_vec();
         program[1] = probe.0 as usize;
         program[2] = probe.1 as usize;
-        run_program(program)[0].cmp(&TARGET)
+        run_program(program.to_vec())[0].cmp(&TARGET)
     });
     let i = res.expect("No solution found");
     (100 * nouns_and_verbs[i].0 + nouns_and_verbs[i].1) as usize

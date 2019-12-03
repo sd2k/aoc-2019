@@ -16,12 +16,12 @@ fn parse_input(input: &str) -> Vec<usize> {
 }
 
 #[aoc(day1, part1)]
-fn part1(input: &Vec<usize>) -> usize {
+fn part1(input: &[usize]) -> usize {
     input.iter().map(|i| calculate_fuel(*i)).sum()
 }
 
 #[aoc(day1, part2)]
-fn part2(input: &Vec<usize>) -> usize {
+fn part2(input: &[usize]) -> usize {
     input.iter().map(|i| calculate_fuel_part2(*i)).sum()
 }
 
